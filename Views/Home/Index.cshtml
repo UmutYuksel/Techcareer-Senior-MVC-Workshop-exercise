@@ -1,0 +1,42 @@
+﻿@model List<MvcMastery.Models.Personel>
+
+@{
+    ViewData["Title"] = "Personel Listesi";
+}
+
+<h2 class="mb-3">Personel Listesi</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">New Personel</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Date Of Birth</th>
+            <th>National Id</th>
+            <th>Settings</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personel in Model)
+        {
+            <tr>
+                <td>@personel.Name</td>
+                <td>@personel.Surname</td>
+                <td>@personel.Email</td>
+                <td>@personel.Phone</td>
+                <td>@personel.Address</td>
+                <td>@personel.DateOfBirth.ToShortDateString()</td>
+                <td>@personel.NationalId</td>
+                <td>
+                    <a asp-action="Edit" asp-route-personelId="@personel.PersonelId" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-personelId="@personel.PersonelId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
